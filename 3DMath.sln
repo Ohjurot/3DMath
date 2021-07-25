@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3DMLib", "3DMLib\3DMLib.vcxproj", "{B891E973-E127-4680-B367-049297630339}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3DMExample", "3DMExample\3DMExample.vcxproj", "{43A59286-FA0F-4587-BD87-CAFFFD8069EA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B891E973-E127-4680-B367-049297630339} = {B891E973-E127-4680-B367-049297630339}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B891E973-E127-4680-B367-049297630339}.Debug|x64.ActiveCfg = Debug|x64
+		{B891E973-E127-4680-B367-049297630339}.Debug|x64.Build.0 = Debug|x64
+		{B891E973-E127-4680-B367-049297630339}.Release|x64.ActiveCfg = Release|x64
+		{B891E973-E127-4680-B367-049297630339}.Release|x64.Build.0 = Release|x64
+		{43A59286-FA0F-4587-BD87-CAFFFD8069EA}.Debug|x64.ActiveCfg = Debug|x64
+		{43A59286-FA0F-4587-BD87-CAFFFD8069EA}.Debug|x64.Build.0 = Debug|x64
+		{43A59286-FA0F-4587-BD87-CAFFFD8069EA}.Release|x64.ActiveCfg = Release|x64
+		{43A59286-FA0F-4587-BD87-CAFFFD8069EA}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {14ECF0A4-C32D-44EE-B12D-6E51B1DA80C7}
+	EndGlobalSection
+EndGlobal
