@@ -47,34 +47,34 @@ namespace M3D {
         inline void normalize() {
             __m3d_sse_vector_normalize(this, this);
         }
-        inline Vec4 nnormalize() {
+        inline Vec4 nnormalize() const {
             Vec4 vec;
             __m3d_sse_vector_normalize(this, &vec);
             return vec;
         }
         // Vector length
-        inline float length() {
+        inline float length() const {
             return __m3d_sse_vector_length(this);
         }
         // Dot product
-        inline float dot(const Vec4& other) {
+        inline float dot(const Vec4& other) const {
             return __m3d_sse_vector_dot(this, &other);
         }
         // Cross product
         inline void cross(const Vec4& other) {
             __m3d_sse_vector_cross(this, &other, this);
         }
-        inline Vec4 ncross(const Vec4& other) {
+        inline Vec4 ncross(const Vec4& other) const {
             Vec4 out;
             __m3d_sse_vector_cross(this, &other, &out);
             return out;
         }
 
         // States
-        inline bool isPoint() {
+        inline bool isPoint() const {
             return w == 1.0f;
         }
-        inline bool isVector() {
+        inline bool isVector() const {
             return w == 0.0f;
         }
 
@@ -192,14 +192,29 @@ namespace M3D {
     }
 
     // Creators
-    inline Vec4 M3D_MakePoint(FLT x, FLT y, FLT z) {
+    inline Vec4 MakePoint(FLT x, FLT y, FLT z) {
         return {
             x, y, z, 1.0f,
         };
     }
-    inline Vec4 M3D_MakeVektor(FLT x, FLT y, FLT z) {
+    inline Vec4 MakeVektor(FLT x, FLT y, FLT z) {
         return {
             x, y, z, 0.0f,
         };
+    }
+
+    // Vector mad
+    inline Vec4 VectorMultiplyAndAdd(const Vec4& mul0, const Vec4& mul1, const Vec4& add) {
+        Vec4 out;
+        __m3d_sse_vector_mad(&mul0, &mul1, &add, &out);
+        return out;
+    }
+
+    // Angel between vectors
+    inline FLT VectorAngleCosTheta(const Vec4& vec0, const Vec4& vec1) {
+        return vec0.dot(vec1) / (vec0.length() * vec1.length());
+    }
+    inline FLT VectorAngelTheta(const Vec4& vec0, const Vec4& vec1) {
+        return acos(VectorAngleCosTheta(vec0, vec1));
     }
 }

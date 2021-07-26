@@ -6,6 +6,16 @@
 %define RPARAM1 RDX 
 %define RPARAM2 R8
 %define RPARAM3 R9
+%define R32RETURN EAX
+%define R32PARAM0 ECX
+%define R32PARAM1 EDX 
+%define R32PARAM2 R8D
+%define R32PARAM3 R9D
+%define R16RETURN AX
+%define R16PARAM0 CX
+%define R16PARAM1 DX 
+%define R16PARAM2 R8W
+%define R16PARAM3 R9W
 ; Float 
 %define RFPARAM0 XMM0
 %define RFPARAM1 XMM1

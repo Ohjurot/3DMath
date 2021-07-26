@@ -31,6 +31,10 @@ extern "C"{
     // Vector cross product
     extern void __m3d_sse_vector_cross(const void* vec4in0, const void* vec4in1, void* vec4out);
 
+    // Special operations
+    // Multiply and add (vec4out = (vec4in0 * vec4in1) + vec4in2
+    extern void __m3d_sse_vector_mad(const void* vec4in0, const void* vec4in1, const void* vec4in2, void* vec4out);
+
 #ifdef __cplusplus
 }
 #endif

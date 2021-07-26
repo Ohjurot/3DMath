@@ -84,6 +84,8 @@
   <ItemGroup>
     <ClInclude Include="3DFloat.h" />
     <ClInclude Include="3DMath.h" />
+    <ClInclude Include="3DRand.h" />
+    <ClInclude Include="3DRand_cpurand.h" />
     <ClInclude Include="3DVector.h" />
     <ClInclude Include="3DVector_sse.h" />
   </ItemGroup>
@@ -95,6 +97,13 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename).obj</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">nasm -fwin64 -dWINDOWS -o"$(IntDir)%(Filename).obj" "%(FullPath)"</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename).obj</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="3DRand_cpurand.asm">
+      <FileType>Document</FileType>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename).obj</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename).obj</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">nasm -fwin64 -dWINDOWS -o"$(IntDir)%(Filename).obj" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">nasm -fwin64 -dWINDOWS -o"$(IntDir)%(Filename).obj" "%(FullPath)"</Command>
     </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

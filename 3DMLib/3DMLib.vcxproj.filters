@@ -27,6 +27,12 @@
     <ClInclude Include="3DVector_sse.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="3DRand_cpurand.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="3DRand.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="3DMath.inc">
@@ -35,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="3DVector_sse.asm">
+      <Filter>Quelldateien</Filter>
+    </CustomBuild>
+    <CustomBuild Include="3DRand_cpurand.asm">
       <Filter>Quelldateien</Filter>
     </CustomBuild>
   </ItemGroup>

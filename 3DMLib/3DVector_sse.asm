@@ -13,6 +13,7 @@ global __m3d_sse_vector_normalize
 global __m3d_sse_vector_length
 global __m3d_sse_vector_dot
 global __m3d_sse_vector_cross
+global __m3d_sse_vector_mad
 
 ; Application programm
 section .text
@@ -148,4 +149,16 @@ __m3d_sse_vector_cross:
     insertps XMM2, XMM0, 0b11110000
     ; Store
     movaps [RPARAM2], XMM2
+    ret
+
+; extern void __m3d_sse_vector_mad(const void* vec4in0, const void* vec4in1, const void* vec4in2, void* vec4out);
+__m3d_sse_vector_mad:
+    ; Load
+    movaps XMM0, [RPARAM0]
+    movaps XMM1, [RPARAM1]
+    movaps XMM2, [RPARAM2]
+    ; Compute and store
+    mulps XMM0, XMM1
+    addps XMM0, XMM2
+    movaps [RPARAM3], XMM0
     ret
