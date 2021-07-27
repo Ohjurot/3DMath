@@ -62,38 +62,33 @@ __m3d_sse_matrix_transpose:
     movaps XMM1, [RPARAM0 + 16]
     movaps XMM2, [RPARAM0 + 32]
     movaps XMM3, [RPARAM0 + 48]
-    ; Matrix B to XMM4-7
-    movaps XMM4, [RPARAM1 +  0]
-    movaps XMM5, [RPARAM1 + 16]
-    movaps XMM6, [RPARAM1 + 32]
-    movaps XMM7, [RPARAM1 + 48]
 
-    ; Transpose matrix B to XMM8-11 (8)
-    insertps XMM8, XMM4, 0b00000000
-    insertps XMM8, XMM5, 0b00010000
-    insertps XMM8, XMM6, 0b00100000
-    insertps XMM8, XMM7, 0b00110000
-    ; Transpose matrix B to XMM8-11 (9)
-    insertps XMM9, XMM4, 0b01000000
-    insertps XMM9, XMM5, 0b01010000
-    insertps XMM9, XMM6, 0b01100000
-    insertps XMM9, XMM7, 0b01110000
-    ; Transpose matrix B to XMM8-11 (10)
-    insertps XMM10, XMM4, 0b10000000
-    insertps XMM10, XMM5, 0b10010000
-    insertps XMM10, XMM6, 0b10100000
-    insertps XMM10, XMM7, 0b10110000
-    ; Transpose matrix B to XMM8-11 (11)
-    insertps XMM11, XMM4, 0b11000000
-    insertps XMM11, XMM5, 0b11010000
-    insertps XMM11, XMM6, 0b11100000
-    insertps XMM11, XMM7, 0b11110000
+    ; Transpose matrix to XMM4-7 (0)
+    insertps XMM0, XMM4, 0b00000000
+    insertps XMM0, XMM5, 0b00010000
+    insertps XMM0, XMM6, 0b00100000
+    insertps XMM0, XMM7, 0b00110000
+    ; Transpose matrix to XMM4-7 (1)
+    insertps XMM1, XMM4, 0b01000000
+    insertps XMM1, XMM5, 0b01010000
+    insertps XMM1, XMM6, 0b01100000
+    insertps XMM1, XMM7, 0b01110000
+    ; Transpose matrix to XMM4-7 (2)
+    insertps XMM2, XMM4, 0b10000000
+    insertps XMM2, XMM5, 0b10010000
+    insertps XMM2, XMM6, 0b10100000
+    insertps XMM2, XMM7, 0b10110000
+    ; Transpose matrix to XMM4-7 (3)
+    insertps XMM3, XMM4, 0b11000000
+    insertps XMM3, XMM5, 0b11010000
+    insertps XMM3, XMM6, 0b11100000
+    insertps XMM3, XMM7, 0b11110000
 
     ; Store matrix
-    movaps [RPARAM2 +  0], XMM8
-    movaps [RPARAM2 + 16], XMM9
-    movaps [RPARAM2 + 32], XMM10
-    movaps [RPARAM2 + 48], XMM11
+    movaps [RPARAM1 +  0], XMM4
+    movaps [RPARAM1 + 16], XMM5
+    movaps [RPARAM1 + 32], XMM6
+    movaps [RPARAM1 + 48], XMM7
     ret
 
 ; extern void __m3d_sse_matrix_mul(const void* mat4x4in0, const void* mat4x4in1, void* mat4x4out);
