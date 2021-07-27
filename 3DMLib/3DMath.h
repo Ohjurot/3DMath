@@ -17,4 +17,11 @@ namespace M3D {
     inline FLT RadianToDegree(FLT rad) {
         return rad * 180 / M3D_PI;
     }
+
+    // Feature struct
+    struct CPU_FEATURES {
+        bool RandomSupport = false;
+        bool VektorSupport = false;
+        bool MatrixSupport = false;
+    };
 }
