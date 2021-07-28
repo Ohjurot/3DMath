@@ -78,6 +78,12 @@ namespace M3D {
             return w == 0.0f;
         }
 
+        // Assign operator
+        inline Vec4& operator=(const Vec4& other) {
+            memcpy(this, &other, sizeof(Vec4));
+            return *this;
+        }
+
         // Vec4 * Vec4
         inline Vec4 operator+(const Vec4& other) {
             Vec4 out;
@@ -197,7 +203,7 @@ namespace M3D {
             x, y, z, 1.0f,
         };
     }
-    inline Vec4 MakeVektor(FLT x, FLT y, FLT z) {
+    inline Vec4 MakeVector(FLT x, FLT y, FLT z) {
         return {
             x, y, z, 0.0f,
         };

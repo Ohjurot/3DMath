@@ -24,6 +24,12 @@ namespace M3D {
             return out;
         }
 
+        // Assign operator
+        inline Mat4x4& operator=(const Mat4x4& other) {
+            memcpy(this, &other, sizeof(Mat4x4));
+            return *this;
+        }
+
         // Matrix addition
         inline Mat4x4 operator+(const Mat4x4& other) {
             Mat4x4 out;
