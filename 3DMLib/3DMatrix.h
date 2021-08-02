@@ -53,14 +53,18 @@ namespace M3D {
         }
 
         // Matrix multiply by matrix
-        inline Mat4x4& operator*(const Mat4x4& other) {
+        inline Mat4x4 operator*(const Mat4x4& other) {
             Mat4x4 out;
             __m3d_sse_matrix_mul(this, &other, &out);
             return out;
         }
+        inline Mat4x4& operator*=(const Mat4x4& other) {
+            __m3d_sse_matrix_mul(this, &other, this);
+            return *this;
+        }
 
         // Vector multiply with matrix
-        inline Vec4& operator*(const Vec4& other) {
+        inline Vec4 operator*(const Vec4& other) {
             Vec4 out;
             __m3d_sse_matrix_vector_mul(this, &other, &out);
             return out;

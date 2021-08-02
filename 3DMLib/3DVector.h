@@ -190,7 +190,7 @@ namespace M3D {
     }
 
     // Serialize
-    std::ostream& operator<<(std::ostream& outStream, const Vec4& vec) {
+    inline std::ostream& operator<<(std::ostream& outStream, const Vec4& vec) {
         // Stream out
         outStream << "(X=" << vec.c_x << ", Y=" << vec.c_y << ", Z=" << vec.c_z << ", W=" << vec.c_w << ")";
         // Return 
