@@ -15,15 +15,13 @@ int main(void) {
 
     // Matrix
     Mat4x4 m0 = {
-        1.0f, 2.0f, 3.0f, 4.0f,
-        5.0f, 6.0f, 7.0f, 8.0f,
-        5.0f, 6.0f, 7.0f, 8.0f,
-        1.0f, 2.0f, 3.0f, 4.0f,
+        1.0f, 7.0f, 14.0f, 0.0f,
+        9.0f, 4.0f, 18.0f, 18.0f,
+        2.0f, 4.0f, 5.0f, 5.0f,
+        1.0f, 7.0f, 1.0f, 11.0f,
     };
-    Vec4 v0 = {1.0f, 2.0f, 3.0f, 4.0f};
 
-    // Matrix add
-    Vec4 v1 = m0 * v0;
+    float d = m0.det();
 
     return 0;
 }

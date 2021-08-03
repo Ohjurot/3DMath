@@ -9,6 +9,7 @@ namespace M3D {
     struct alignas(M3D_FLT4_ALLIGN) Mat4x4 {
         union {
             FLT elements[4 * 4] = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
+            FLT elements2D[4][4];
             struct {
                 FLT row0[4], row1[4], row2[4], row3[4];
             };
@@ -22,6 +23,23 @@ namespace M3D {
             Mat4x4 out;
             __m3d_sse_matrix_transpose(this, &out);
             return out;
+        }
+
+        // Determinate
+        inline float det() {
+            return
+                elements2D[0][3] * elements2D[1][2] * elements2D[2][1] * elements2D[3][0] - elements2D[0][2] * elements2D[1][3] * elements2D[2][1] * elements2D[3][0] -
+                elements2D[0][3] * elements2D[1][1] * elements2D[2][2] * elements2D[3][0] + elements2D[0][1] * elements2D[1][3] * elements2D[2][2] * elements2D[3][0] +
+                elements2D[0][2] * elements2D[1][1] * elements2D[2][3] * elements2D[3][0] - elements2D[0][1] * elements2D[1][2] * elements2D[2][3] * elements2D[3][0] -
+                elements2D[0][3] * elements2D[1][2] * elements2D[2][0] * elements2D[3][1] + elements2D[0][2] * elements2D[1][3] * elements2D[2][0] * elements2D[3][1] +
+                elements2D[0][3] * elements2D[1][0] * elements2D[2][2] * elements2D[3][1] - elements2D[0][0] * elements2D[1][3] * elements2D[2][2] * elements2D[3][1] -
+                elements2D[0][2] * elements2D[1][0] * elements2D[2][3] * elements2D[3][1] + elements2D[0][0] * elements2D[1][2] * elements2D[2][3] * elements2D[3][1] +
+                elements2D[0][3] * elements2D[1][1] * elements2D[2][0] * elements2D[3][2] - elements2D[0][1] * elements2D[1][3] * elements2D[2][0] * elements2D[3][2] -
+                elements2D[0][3] * elements2D[1][0] * elements2D[2][1] * elements2D[3][2] + elements2D[0][0] * elements2D[1][3] * elements2D[2][1] * elements2D[3][2] +
+                elements2D[0][1] * elements2D[1][0] * elements2D[2][3] * elements2D[3][2] - elements2D[0][0] * elements2D[1][1] * elements2D[2][3] * elements2D[3][2] -
+                elements2D[0][2] * elements2D[1][1] * elements2D[2][0] * elements2D[3][3] + elements2D[0][1] * elements2D[1][2] * elements2D[2][0] * elements2D[3][3] +
+                elements2D[0][2] * elements2D[1][0] * elements2D[2][1] * elements2D[3][3] - elements2D[0][0] * elements2D[1][2] * elements2D[2][1] * elements2D[3][3] -
+                elements2D[0][1] * elements2D[1][0] * elements2D[2][2] * elements2D[3][3] + elements2D[0][0] * elements2D[1][1] * elements2D[2][2] * elements2D[3][3];
         }
 
         // Assign operator
