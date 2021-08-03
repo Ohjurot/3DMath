@@ -278,7 +278,7 @@ namespace M3D {
     // Perspective projection (hFov in Rad; aspectRation = width / height)
     inline Mat4x4 PerspectiveProjectonMatrix_D3D(float hFov, float aspectRation, float nearZ, float farZ) {
         // Compute |l/r| 
-        float hS = nearZ * tanf(hFov);
+        float hS = nearZ * tanf(0.5f * hFov);
         // Compute |t/b|
         float vS = hS / aspectRation;
         // Composit matrix
