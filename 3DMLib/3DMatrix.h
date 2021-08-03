@@ -236,4 +236,57 @@ namespace M3D {
             0.0f,                                                       0.0f,                                                       0.0f,                                                       1.0f,
         };
     }
+
+    // Mirroring matrix (LH <--> RH)
+    inline Mat4x4 ZMirrorMatrix() {
+        return {
+            1.0f,   0.0f,   0.0f,   0.0f,
+            0.0f,   1.0f,   0.0f,   0.0f,
+            0.0f,   0.0f,  -1.0f,   0.0f,
+            0.0f,   0.0f,   0.0f,   1.0f,
+        };
+    }
+
+    // Plain Orthographic Projection matrix (z-Plane = 0.0f)
+    inline Mat4x4 PlaneOrthographicProjectionMatrix() {
+        return {
+            1.0f,   0.0f,   0.0f,   0.0f,
+            0.0f,   1.0f,   0.0f,   0.0f,
+            0.0f,   0.0f,   0.0f,   0.0f,
+            0.0f,   0.0f,   0.0f,   1.0f,
+        };
+    }
+
+    // Orthographic Projection
+    inline Mat4x4 OrthographicProjectionMatrix_D3D(float left, float right, float top, float bottom, float nearZ, float farZ) {
+        return {
+            2.0f / (right - left),      0.0f,                       0.0f,                      -((right + left) / (right - left)),
+            0.0f,                       2.0f / (top - bottom),      0.0f,                      -((top + bottom) / (top - bottom)),
+            0.0f,                       0.0f,                       1.0f / (farZ - nearZ),     -((nearZ) / (farZ - nearZ)),
+            0.0f,                       0.0f,                       0.0f,                       1.0f,
+        };
+    }
+    inline Mat4x4 OrthographicProjectionMatrix_D3D(float width, float height, float nearZ, float farZ) {
+        return {
+            2.0f / width,               0.0f,                       0.0f,                       0.0f,
+            0.0f,                       2.0f / height,              0.0f,                       0.0f,
+            0.0f,                       0.0f,                       1.0f / (farZ - nearZ),     -((nearZ) / (farZ - nearZ)),
+            0.0f,                       0.0f,                       0.0f,                       1.0f,
+        };
+    }
+
+    // Perspective projection (hFov in Rad; aspectRation = width / height)
+    inline Mat4x4 PerspectiveProjectonMatrix_D3D(float hFov, float aspectRation, float nearZ, float farZ) {
+        // Compute |l/r| 
+        float hS = nearZ * tanf(hFov);
+        // Compute |t/b|
+        float vS = hS / aspectRation;
+        // Composit matrix
+        return {
+            (2.0f * nearZ) / (2.0f * hS),   0.0f,                           0.0f,                       0.0f,
+            0.0f,                           (2.0f * nearZ) / (2.0f * vS),   0.0f,                       0.0f,
+            0.0f,                           0.0f,                           farZ / (farZ - nearZ),     -((farZ * nearZ) / (farZ - nearZ)),
+            0.0f,                           0.0f,                           1.0f,                       0.0f,
+        };
+    }
 }
