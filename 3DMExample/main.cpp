@@ -21,7 +21,7 @@ int main(void) {
         1.0f, 7.0f, 1.0f, 11.0f,
     };
 
-    float d = m0.det();
+    auto inv = m0.ninverse();
 
     return 0;
 }
